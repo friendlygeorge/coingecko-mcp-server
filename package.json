@@ -1,7 +1,7 @@
 {
   "name": "coingecko-mcp-server",
   "version": "1.0.0",
-  "description": "MCP server for CoinGecko — free crypto market data API for AI assistants",
+  "description": "MCP server for CoinGecko \u2014 free crypto market data API for AI assistants",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -31,5 +31,17 @@
   "devDependencies": {
     "typescript": "^5.5.0",
     "@types/node": "^20.0.0"
+  },
+  "mcpName": "io.github.friendlygeorge/coingecko-mcp-server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/friendlygeorge/coingecko-mcp-server.git"
+  },
+  "homepage": "https://github.com/friendlygeorge/coingecko-mcp-server#readme",
+  "bugs": {
+    "url": "https://github.com/friendlygeorge/coingecko-mcp-server/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
