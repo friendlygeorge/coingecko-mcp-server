@@ -75,7 +75,7 @@ const server = new McpServer({
 // ── Tool: search_coins ──
 server.tool(
   "search_coins",
-  "Search for cryptocurrencies by name or symbol",
+  "Search cryptocurrencies by name or symbol. Returns matching coins ranked by market cap, each with name, symbol, rank, and CoinGecko ID. Use the returned ID in get_prices, get_coin_details, or get_price_history for full data on a specific coin.",
   {
     query: z.string().describe("Search term (e.g. 'bitcoin', 'ETH', 'solana')"),
     limit: z.number().optional().default(10).describe("Max results (default 10)"),
@@ -102,7 +102,7 @@ server.tool(
 // ── Tool: get_prices ──
 server.tool(
   "get_prices",
-  "Get current prices, market caps, and 24h changes for one or more coins",
+  "Get real-time prices, market caps, 24h volume, and 24h price change for one or more coins. Accepts comma-separated CoinGecko IDs (use search_coins to find IDs). Returns formatted price, market cap, volume, and 24h change percentage for each coin. Useful for quick price checks across multiple tokens.",
   {
     coin_ids: z.string().describe("Comma-separated CoinGecko IDs (e.g. 'bitcoin,ethereum,solana')"),
     vs_currency: z.string().optional().default("usd").describe("Target currency (default: usd)"),
@@ -132,7 +132,7 @@ server.tool(
 // ── Tool: get_market_overview ──
 server.tool(
   "get_market_overview",
-  "Get top coins by market cap with full stats",
+  "Get top cryptocurrencies ranked by market cap with price, market cap, 24h change, and 24h volume. Returns up to N coins (default 20) sorted by market cap descending. Useful for a quick snapshot of the overall market or identifying top performers.",
   {
     limit: z.number().optional().default(20).describe("Number of top coins (default 20)"),
     vs_currency: z.string().optional().default("usd").describe("Target currency (default: usd)"),
@@ -152,7 +152,7 @@ server.tool(
 // ── Tool: get_trending ──
 server.tool(
   "get_trending",
-  "Get currently trending coins on CoinGecko (last 24h search volume)",
+  "Get the top trending coins on CoinGecko over the last 24 hours based on search volume. Returns each trending coin's name, symbol, rank, market cap, and 24h price change. Useful for spotting momentum and emerging narratives in the crypto market.",
   {},
   async () => {
     try {
@@ -179,7 +179,7 @@ server.tool(
 // ── Tool: get_coin_details ──
 server.tool(
   "get_coin_details",
-  "Get detailed info about a specific coin (description, links, market data, genesis date, categories)",
+  "Get comprehensive details for a single coin by ID: current price, market cap, 24h/7d/30d changes, ATH/ATL, supply data, categories, genesis date, description, and links (homepage, Twitter, GitHub). Returns formatted markdown with all available market data. Use search_coins to find the coin ID first.",
   {
     coin_id: z.string().describe("CoinGecko coin ID (e.g. 'bitcoin', 'ethereum')"),
   },
@@ -234,7 +234,7 @@ server.tool(
 // ── Tool: get_price_history ──
 server.tool(
   "get_price_history",
-  "Get historical price data for a coin (daily, weekly, monthly)",
+  "Get historical price data for a coin over N days (1, 7, 30, 90, 365, or max). Returns sampled daily prices with date stamps and overall period change percentage. Useful for charting trends and identifying price patterns over time.",
   {
     coin_id: z.string().describe("CoinGecko coin ID (e.g. 'bitcoin')"),
     vs_currency: z.string().optional().default("usd").describe("Target currency (default: usd)"),
@@ -278,7 +278,7 @@ server.tool(
 // ── Tool: get_global_stats ──
 server.tool(
   "get_global_stats",
-  "Get global crypto market statistics (total market cap, BTC dominance, active cryptos, etc.)",
+  "Get aggregate crypto market statistics: total market cap, 24h volume, BTC/ETH dominance percentages, number of active cryptocurrencies and exchanges, and 24h market cap change. Returns formatted summary of the entire crypto market in one call.",
   {},
   async () => {
     try {
@@ -305,7 +305,7 @@ server.tool(
 // ── Tool: get_token_price_comparison ──
 server.tool(
   "get_token_price_comparison",
-  "Compare prices and stats of multiple tokens side-by-side",
+  "Compare multiple tokens side-by-side in a formatted table. Shows price, market cap, 24h change, 7d change, and 24h volume for each coin. Accepts comma-separated CoinGecko IDs. Use search_coins to find IDs, then compare with this tool for a quick multi-token comparison.",
   {
     coin_ids: z.string().describe("Comma-separated coin IDs (e.g. 'bitcoin,ethereum,solana,avalanche-2')"),
     vs_currency: z.string().optional().default("usd").describe("Target currency"),
