@@ -111,6 +111,40 @@ Token Comparison (USD):
 | Solana (SOL) | $178.5 | $78.4B | +4.3% | +12.1% | $3,800M |
 ```
 
+## Use Cases
+
+### Portfolio Research
+Ask "What's my portfolio worth?" after listing your holdings. The server compares prices across multiple tokens and gives you a snapshot with market caps, 24h changes, and volume.
+
+### Yield Farming Research
+"Show me trending coins with high volume" — find new opportunities by checking what's getting attention. Combine with `get_coin_details` to deep-dive into categories and links before committing.
+
+### Market Intelligence
+"What's the total crypto market cap and BTC dominance?" gives you macro context in seconds. Use `get_global_stats` before making any allocation decision.
+
+### Token Comparison
+"Compare Solana, Avalanche, and Polkadot" — side-by-side price, market cap, and performance data. Faster than opening three tabs on CoinGecko.
+
+### Historical Analysis
+"How has Bitcoin performed over the last 30 days?" — daily price history for trend analysis. Works with any timeframe (daily, weekly, monthly, yearly).
+
+## Troubleshooting
+
+### Rate limit errors (429)
+The server auto-retries on 429, but if you're making rapid queries, add a short delay between requests. Free tier allows ~27 calls/minute. If you hit this frequently, set a `COINGECKO_API_KEY` for higher limits.
+
+### "Coin not found" errors
+Use `search_coins` first to find the correct CoinGecko ID. Coin IDs are lowercase slugs (e.g. `bitcoin`, `ethereum`, `solana`), not ticker symbols.
+
+### Server won't start
+Make sure Node.js 18+ is installed: `node --version`. If using npx, ensure npm is up to date: `npm install -g npm@latest`.
+
+### MCP client can't connect
+Verify the config path is correct. Claude Desktop uses `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS and `%APPDATA%\Claude\claude_desktop_config.json` on Windows. Restart the client after config changes.
+
+### Slow responses
+CoinGecko's free tier has ~300ms latency per call. Multi-coin queries (`get_prices`, `get_token_price_comparison`) make one API call regardless of how many coins you pass, so batch your queries.
+
 ## Requirements
 
 - Node.js 18+

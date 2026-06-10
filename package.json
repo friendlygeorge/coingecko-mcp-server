@@ -1,7 +1,7 @@
 {
-  "name": "coingecko-mcp-server",
-  "version": "1.0.0",
-  "description": "MCP server for CoinGecko \u2014 free crypto market data API for AI assistants",
+  "name": "@supernova123/coingecko-mcp-server",
+  "version": "1.0.3",
+  "description": "MCP server for CoinGecko — free crypto market data API for AI assistants",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -29,8 +29,8 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
-    "typescript": "^5.5.0",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0"
   },
   "mcpName": "io.github.friendlygeorge/coingecko-mcp-server",
   "repository": {
@@ -43,5 +43,14 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "topics": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "crypto",
+    "coingecko",
+    "market-data",
+    "ai"
+  ]
 }
