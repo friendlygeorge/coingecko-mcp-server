@@ -2,9 +2,13 @@
 
 > An MCP server for [CoinGecko](https://www.coingecko.com) — connect any MCP-compatible client to free crypto market data.
 
+[![npm version](https://img.shields.io/npm/v/@supernova123/coingecko-mcp-server)](https://www.npmjs.com/package/@supernova123/coingecko-mcp-server)
+[![npm downloads](https://img.shields.io/npm/dm/@supernova123/coingecko-mcp-server)](https://www.npmjs.com/package/@supernova123/coingecko-mcp-server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-compatible-blueviolet)](https://modelcontextprotocol.io)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Claude Desktop](https://img.shields.io/badge/Claude%20Desktop-ready-orange)](https://claude.ai/download)
+[![Cursor](https://img.shields.io/badge/Cursor-compatible-blue)](https://cursor.sh)
 
 ## What is this?
 
@@ -34,21 +38,9 @@ Use it with **Claude Desktop**, **Cursor**, **Windsurf**, **Cline**, **Continue*
 
 ## Quick Start
 
-### 1. Install
+### 1. Add to your MCP client
 
-```bash
-npm install -g coingecko-mcp-server
-```
-
-Or run directly with npx:
-
-```bash
-npx -y coingecko-mcp-server
-```
-
-### 2. Configure your MCP client
-
-Add to your MCP client config (e.g. `claude_desktop_config.json`):
+Add this to your MCP client config (e.g. `claude_desktop_config.json`):
 
 ```json
 {
@@ -61,19 +53,9 @@ Add to your MCP client config (e.g. `claude_desktop_config.json`):
 }
 ```
 
-Or with global install:
+That's it. No API key, no install step. npx downloads and runs it automatically.
 
-```json
-{
-  "mcpServers": {
-    "coingecko": {
-      "command": "coingecko-mcp-server"
-    }
-  }
-}
-```
-
-### 3. Use it
+### 2. Use it
 
 Ask your AI assistant things like:
 
@@ -127,6 +109,15 @@ Ask "What's my portfolio worth?" after listing your holdings. The server compare
 
 ### Historical Analysis
 "How has Bitcoin performed over the last 30 days?" — daily price history for trend analysis. Works with any timeframe (daily, weekly, monthly, yearly).
+
+## Security
+
+- **No API key by default** — uses CoinGecko's free tier. Optional API key for higher rate limits.
+- **Read-only** — only fetches public market data from CoinGecko's API. No writes, no mutations.
+- **No local file access** — does not read or write any files on your machine.
+- **No shell access** — does not execute commands or spawn processes.
+- **Rate-limited** — automatically caps requests to stay within free tier limits.
+- **Open source** — MIT licensed. Inspect the code at [GitHub](https://github.com/friendlygeorge/coingecko-mcp-server).
 
 ## Troubleshooting
 
