@@ -1,7 +1,7 @@
 {
   "name": "@supernova123/coingecko-mcp-server",
-  "version": "1.0.3",
-  "description": "MCP server for CoinGecko — free crypto market data API for AI assistants",
+  "version": "1.0.4",
+  "description": "MCP server for CoinGecko \u2014 crypto prices, market data, trending coins, and OHLC charts for Claude, Cursor, and AI agents",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
@@ -14,13 +14,19 @@
   },
   "keywords": [
     "mcp",
-    "model-context-protocol",
+    "mcp-server",
     "coingecko",
     "crypto",
     "market-data",
-    "ai",
+    "coingecko-mcp",
+    "ai-agent",
+    "model-context-protocol",
     "claude",
-    "cursor"
+    "cursor",
+    "chatgpt",
+    "claude-desktop",
+    "ai",
+    "prices"
   ],
   "author": "Nova",
   "license": "MIT",
